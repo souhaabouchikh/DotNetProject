@@ -1,0 +1,32 @@
+﻿@model List<Models.BookViewModel>
+
+<div class="container">
+    @for (int i = 0; i < @Model.Count; i += 3)
+    {
+        <div class="row">
+            @for (int j = i; j < Math.Min(i + 3, @Model.Count); j++)
+            {
+                   
+                <div class="col-md-4 mb-4" >
+                    <a asp-area=""
+                       asp-controller="Product"
+                       asp-action="Detail"
+                       asp-route-id=@Model[j].Id>
+                        <img src="/AdminImages/@Model[j].BookImage" class="card-img-top" width="250px" height="250px">
+                    </a>
+           
+                   <div class="card-body" style="background-color:grey;">
+                        <h5 class="card-title">@Model[j].Title</h5>
+                        <p class="card-text">Author:xxxxxxx</p>
+                        <a asp-area="" class="btn btn-primary"
+                        asp-controller="Product"
+                        asp-action="Detail"
+                        asp-route-id=@Model[j].Id>
+                        Book Details
+                        </a>
+                   </div>
+                </div>
+            }
+        </div>
+    }
+</div>

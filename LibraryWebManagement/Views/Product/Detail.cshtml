@@ -1,0 +1,56 @@
+﻿@model Models.BookViewModel;
+<div class="card ">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="/AdminImages/@Model.BookImage" class="card-img-top" width="250px" height="250px">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <p class="card-text">@Model.Description</p>
+ @*                <p class="card-text">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
+                </p> *@
+                @if (Model.isDiscounted)
+                {
+                    <p class="card-text" style="font-size:20px">
+                        <b class="text-body-secondary" style="color:red;">DISCOUNTED!!!</b><br />
+                        <del><b class="text-body-secondary" style="color:red;">PRICE: @Model.Price DH</b></del><br />
+                        <u><b class="text-body-secondary">PRICE: @Model.DiscountPrice DH</b></u>
+                    </p>
+                }
+                else
+                {
+                    <p class="card-text" style="font-size:20px">
+                        <u><b class="text-body-secondary">PRICE: @Model.Price DH</b></u>
+                    </p>
+                }
+               @if (Context.Session.TryGetValue("Id", out var elementValue) && elementValue != null && elementValue.Length > 0)
+                {
+                   <a asp-controller="Panier"
+                   asp-action="Index"
+                   class="btn btn-primary"
+                   asp-route-id="@Model.Id">Add To Favorites
+                   </a>
+                }
+                else
+                {
+                    <a asp-controller="Panier"
+                       asp-action="Index"
+                       class="btn btn-primary disabled"
+                       asp-route-id="@Model.Id">
+                        Add To Favorites
+                    </a>
+                    <p>Loggin In to be Able to add favorites</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

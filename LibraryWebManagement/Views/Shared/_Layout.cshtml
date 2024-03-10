@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LibraryWebManagement</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LibraryWebManagement.styles.css" asp-append-version="true" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UJbmEv1FQOpilznp7ec5tkn2wL9s4lVRJtzLsDd3iJQq9e9lIfSk4RrXQ3EkwTN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6Vrj5X88GfFnpJYcCD9LbB+qL5PIxRj/m" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        @{
+            // Check if a session element exists
+            if (Context.Session.TryGetValue("Id", out var elementValue) && elementValue != null && elementValue.Length > 0)
+            {
+                <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+                    <!-- Container wrapper -->
+                    <div class="container-fluid">
+                        <!-- Toggle button -->
+                        <button data-mdb-collapse-init
+                                class="navbar-toggler"
+                                type="button"
+                                data-mdb-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+
+                        <!-- Collapsible wrapper -->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Navbar brand -->
+                            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                                <img src="~/Images/logo.png"
+                                     height="25"
+                                     alt="MDB Logo"
+                                     loading="lazy" />
+                            </a>
+                            <!-- Left links -->
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#team">Categories</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- Left links -->
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <!-- Icon -->
+                            <a class="text-reset me-3" href="#">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            <!-- Avatar -->
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Profil" asp-action="Index">
+                                        Profile
+                                    </a>
+                                </li>                         
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="SignOut">
+                                        SignOut
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Right elements -->
+                    </div>
+                    <!-- Container wrapper -->
+                </nav>
+                <!-- Navbar -->
+            }
+            else
+            {
+                <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+                    <!-- Container wrapper -->
+                    <div class="container-fluid">
+                        <!-- Toggle button -->
+                        <button data-mdb-collapse-init
+                                class="navbar-toggler"
+                                type="button"
+                                data-mdb-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+
+                        <!-- Collapsible wrapper -->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Navbar brand -->
+                            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                                <img src="~/Images/logo.png"
+                                     height="25"
+                                     alt="MDB Logo"
+                                     loading="lazy" />
+                            </a>
+                            <!-- Left links -->
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#team">Categories</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                            <!-- Left links -->
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <!-- Icon -->
+                            <a class="text-reset me-3" href="#">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            <!-- Avatar -->
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">
+                                        Login
+                                    </a>
+                                </li>     
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Inscription" asp-action="Index">
+                                        Inscription
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                        <!-- Right elements -->
+                    </div>
+                    <!-- Container wrapper -->
+                </nav>
+                <!-- Navbar -->
+            }
+        }
+
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy;2024 Souha Abouchikh EMSI MAARIF G91
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true">
+
+    </script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
